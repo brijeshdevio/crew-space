@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { BaseLayout } from "@/layout";
+import { AuthLayout, BaseLayout } from "@/layout";
 import { Home, Register } from "@/pages";
 import "@/App.css";
 
@@ -11,7 +11,9 @@ function App() {
           <Route element={<BaseLayout />}>
             <Route path="/" element={<Home />} />
           </Route>
-          <Route path="/register" element={<Register />} />
+          <Route element={<AuthLayout />}>
+            <Route path="/register" element={<Register />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </>
