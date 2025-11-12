@@ -6,7 +6,7 @@ export function BaseLayout() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="w-full sm:w-[90%] md:w-[85%] lg:w-[80%] max-w-[1000px] flex flex-col gap-5 mx-auto px-3 py-5">
         <Outlet />
       </main>
       <Footer />
