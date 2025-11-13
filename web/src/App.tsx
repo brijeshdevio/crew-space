@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AuthLayout, BaseLayout } from "@/layout";
-import { Home, Login, Register } from "@/pages";
+import { Dashboard, Home, Login, Register } from "@/pages";
 import "@/App.css";
 
 function App() {
@@ -10,6 +10,7 @@ function App() {
         <Routes>
           <Route element={<BaseLayout />}>
             <Route path="/" element={<Home />} />
+            <Route path="/dashboard" element={<Dashboard />} />
           </Route>
           <Route element={<AuthLayout />}>
             <Route path="/register" element={<Register />} />
