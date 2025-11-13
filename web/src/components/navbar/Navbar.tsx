@@ -9,6 +9,17 @@ export function Navbar() {
           <Atom size={24} className="text-primary" />
           <span className="text-xl font-bold">Crew Space</span>
         </Link>
+        <div className="flex items-center gap-3">
+          <Link to={"/"} className="btn btn-ghost btn-sm rounded-full">
+            Home
+          </Link>
+          <Link to={"/dashboard"} className="btn btn-ghost btn-sm rounded-full">
+            Dashboard
+          </Link>
+          <Link to={"/login"} className="btn btn-primary btn-sm rounded-full">
+            Login
+          </Link>
+        </div>
       </div>
     </nav>
   );
