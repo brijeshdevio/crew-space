@@ -1,10 +1,12 @@
 import { GroupFeedCard } from "@/components/groupFeedCard";
+import { groupFeed } from "../../data/group-feed";
 
 export function GroupFeed() {
   return (
     <section>
-      <h1 className="text-2xl">Group Feed</h1>
-      <GroupFeedCard />
+      {groupFeed.map((_, index) => (
+        <GroupFeedCard key={index} />
+      ))}
     </section>
   );
 }
