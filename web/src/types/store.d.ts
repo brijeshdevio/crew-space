@@ -1,1 +1,4 @@
-export interface StoreState {}
+export interface StoreState {
+  isGroupModal: boolean;
+  setIsGroupModal: (value: boolean) => void;
+}
