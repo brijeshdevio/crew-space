@@ -1,12 +1,19 @@
+import { useStore } from "@/hooks";
 import { X } from "lucide-react";
 
 export function NewPost() {
+  const { setIsPostModal } = useStore();
+  const handleClosePostModal = () => setIsPostModal(false);
+
   return (
     <div className="fixed top-0 left-0 w-full h-screen flex items-center justify-center z-50 bg-base-300/80">
       <div className="w-[350px] flex flex-col gap-4 px-5 py-5 rounded-2xl bg-base-100 shadow-md">
         <div className="flex items-center justify-between">
           <h2 className="text-md font-bold">What's your update?</h2>
-          <button className="btn btn-sm btn-ghost btn-circle">
+          <button
+            className="btn btn-sm btn-ghost btn-circle"
+            onClick={handleClosePostModal}
+          >
             <X size={20} />
           </button>
         </div>
