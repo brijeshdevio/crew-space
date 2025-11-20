@@ -6,7 +6,7 @@ import {
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
 import { Group } from 'src/schemas/group.schema';
-import { CreateGroupDto } from './dto';
+import { CreateGroupDto, UpdateGroupDto } from './dto';
 
 @Injectable()
 export class GroupService {
@@ -44,5 +44,33 @@ export class GroupService {
       return group;
     }
     throw new ForbiddenException('You do not have access to this group');
+  }
+
+  async updateGroup(
+    user: string,
+    id: string,
+    data: UpdateGroupDto,
+  ): Promise<Group> {
+    this.isValidId(id);
+
+    const updatedGroup = await this.groupModel
+      .findOneAndUpdate({ user, _id: id }, { ...data }, { new: true })
+      .lean()
+      .select('-__v -user');
+    if (updatedGroup) {
+      return updatedGroup;
+    }
+    throw new ForbiddenException('You do not have access to update this group');
+  }
+
+  async deleteGroup(user: string, id: string): Promise<void> {
+    this.isValidId(id);
+
+    const result = await this.groupModel.deleteOne({ user, _id: id });
+    if (result.deletedCount === 0) {
+      throw new ForbiddenException(
+        'You do not have access to delete this group',
+      );
+    }
   }
 }
