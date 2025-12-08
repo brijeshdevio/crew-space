@@ -1,25 +1,17 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { AuthLayout, BaseLayout } from "@/layout";
-import { Dashboard, GroupFeed, Home, Login, Register } from "@/pages";
+import { Footer, Navbar } from "@/components";
+import { Home } from "@/pages";
 import "@/App.css";
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route element={<BaseLayout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/g/:id" element={<GroupFeed />} />
-          </Route>
-          <Route element={<AuthLayout />}>
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   );
 }
 
